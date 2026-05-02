@@ -77,7 +77,7 @@ export default function BusinessDetail() {
   const lineData = stats?.dailyScans?.map((d) => ({ day: d._id, scans: d.count })) || [];
 
   const publicBase = import.meta.env.VITE_PUBLIC_APP_URL?.trim().replace(/\/$/, '') ?? '';
-  const publicUrl = qr && publicBase ? `${publicBase}/r/${qr.qrSlug}` : '';
+  const publicUrl = qr?.targetUrl || (qr && publicBase ? `${publicBase}/r/${qr.qrSlug}` : '');
 
   const fbTotalPages = Math.max(1, Math.ceil(fbTotal / fbLimit));
 
